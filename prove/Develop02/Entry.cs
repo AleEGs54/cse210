@@ -9,7 +9,7 @@ public class Entry
     {
         //This method must add 3 things: the date + the prompt + the entry text (answer)
         //$"{date} {promptText}: {entryText} "
-        string anEntry = $"\nDate: {_date} - Prompt: {_promptText} \nanswer: {_entryText} \nemotion: {_emotion}";
+        string anEntry = $"\nDate: {_date} - Prompt: {_promptText} \nanswer: {_entryText} \nemotion: {_emotion}\n";
         Console.WriteLine(anEntry);
     }
 }

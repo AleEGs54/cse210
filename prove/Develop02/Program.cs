@@ -23,6 +23,7 @@ class Program
             Console.WriteLine("1. Write\n2. Display\n3. Load\n4. Save\n5. Quit");
             Console.Write("What would you like to do? ");
             userInput = int.Parse(Console.ReadLine());
+            Console.WriteLine();
             
             
             if (userInput == 1)
@@ -73,7 +74,7 @@ class Program
             {
                 //Code to Save
                 //Creating a file
-                Console.WriteLine("What is the filename? (If the file doesn't exist in your directory, a new one will be created with that name)");
+                Console.WriteLine("What is the filename? (If the file doesn't exist in your directory, a new one will be created with that name)\n");
                 string fileName = Console.ReadLine();
                 //Calling the SaveToFile method from the Journal class and journal instance
                 journal.SaveToFile(fileName);
