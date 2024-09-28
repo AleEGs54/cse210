@@ -1,4 +1,8 @@
 using System;
+using System.IO;
+//author: Alejandro Esteves
+//Exceeding requirements: Adding try-catch handler exceptions to avoid the program to suddenly crash, adding the capacity to register your emotion in the moment,
+//adding a warning to the user - if he loads without saving, the current entries will be lost.
 
 class Program
 {
@@ -8,79 +12,85 @@ class Program
 
         Console.WriteLine("Welcome to the Journal Program!");
 
+        //Inicializar la clase Journal fuera para que no se reinicie en el bucle
+        Journal journal = new Journal();
+
         while (userInput != 5)
         {
-            
+            try
+            {
             Console.WriteLine("Please select one of the following choices: ");
-            Console.WriteLine("1. Write\n2. Display\n3.Load\n4. Save\n5. Quit");
+            Console.WriteLine("1. Write\n2. Display\n3. Load\n4. Save\n5. Quit");
             Console.Write("What would you like to do? ");
             userInput = int.Parse(Console.ReadLine());
+            
             
             if (userInput == 1)
             {
 
-                //1. Primero se genera un prompt
-                PromptGenerator newPrompt = new PromptGenerator();
-
-                //Creando Prompts manualmente
-                newPrompt._prompts.Add("Que fue lo mas interesante que te pasó hoy? \n");
-                newPrompt._prompts.Add("Quien hizo una diferencia en tu día? \n");
-                newPrompt._prompts.Add("Cómo viste la mano de Dios el día de hoy? \n");
-                newPrompt._prompts.Add("Cuál es un aspecto que debes de mejorar en el transcurso del día? \n");
-                newPrompt._prompts.Add("Cuando la pasaste bien/mal? \n");
-
-                //Almacenando el prompt que se eligió aleatoriamente
-                string thePrompt = newPrompt.GetRandomPrompt();
-                //Imprimiendo el prompt en la consola
-                Console.WriteLine(thePrompt);
-
-                //2. Luego se da espacio para que el usuario escriba la respuesta
+                
                 //Creando una nueva instancia de la clase Entry
                 Entry newEntry = new Entry();
 
-                //Almacenando el prompt en la instancia
-                newEntry._promptText = thePrompt;
-                //Almacenar la respuesta del usuario
-                newEntry._entryText = Console.ReadLine();
-                //3. Se guarda junto con la fecha actual
-                //Creando una instancia de la clase DateTime
-                DateTime theCurrentTime = DateTime.Now;
-                //Almacenando la fecha actual y corta en la instancia de Entry
-                newEntry._date = theCurrentTime.ToShortDateString();
-                
-                //4.Almacenando TODA la instancia en la lista del tipo Entry
-                //Creando una instancia de la clase Journal para acceder a la lista _entries
-                Journal journal = new Journal();
-                //La entrada es finalmente almacenada en una lista de su tipo
-                journal._entries.Add(newEntry);
-
-
-                //8. Mostrando el resultado con la funcion de entry - por ahora servirá de prueba
-                // newEntry.Display();
-
+                //Llamando al metodo AddEntry de la clase Journal para agregar una nueva entrada
+                journal.AddEntry(newEntry);
 
             }
             else if (userInput == 2)
             {
-                //code here
+                //journal llama al metodo DisplayAll() para imprimir Todas las interacciones
+                journal.DisplayAll();
             }
 
             else if (userInput == 3)
             {
-                //code here
+                //Code to Load
+
+                //Recordatorio de que al cargar una nueva interaccion, la actual se borrará si no se ha guardado
+                Console.WriteLine("Are you sure? Remember that your current sesion will be deleted if you don't save your entries... (Type Yes or No)");
+                string desicion = Console.ReadLine();
+
+                //Tomando la desición
+                if (desicion.ToLower() == "yes") {
+                //Almacenando el archivo csv en una variable
+                Console.WriteLine("What is the filename? ");
+                string fileName = Console.ReadLine();
+
+                //Calling the LoadFromFile method from the Journal class and journal instance
+                journal.LoadFromFile(fileName);
+                }
+                else if (desicion.ToLower() == "no")
+                {
+                    continue;
+                }
+                else {
+                    Console.WriteLine("That's not a valid answer... try again later");
+                }
+                
             }
         
             else if (userInput == 4)
             {
-                //code here
+                //Code to Save
+                //Creating a file
+                Console.WriteLine("What is the filename? (If the file doesn't exist in your directory, a new one will be created with that name)");
+                string fileName = Console.ReadLine();
+                //Calling the SaveToFile method from the Journal class and journal instance
+                journal.SaveToFile(fileName);
             }
             else if (userInput == 5)
             {
-                //code here thanks and bye
+                Console.WriteLine("\nThanks for using the Journal Program!");
             }
 
             else {
                 //code here - that's not a valid number
+                Console.WriteLine("That's not a valid number");
+            }
+            }
+            //Would a user type anything else tha numbers?... yes, probably
+            catch (FormatException){
+                Console.WriteLine("That's not a number!");
             }
         }
     }
