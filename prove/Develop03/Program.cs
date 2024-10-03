@@ -11,6 +11,6 @@ class Program
         string scriptureText = "Jesus answered, Verily, verily, I say unto thee, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God.";
 
         //Finally create a Scripture object
-        Scripture scripture1  = new Scripture(Reference: reference1, text: scriptureText);
+        Scripture scripture1 = new Scripture(Reference: reference1, text: scriptureText);
     }
 }

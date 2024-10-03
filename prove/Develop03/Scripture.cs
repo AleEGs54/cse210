@@ -11,7 +11,24 @@ public class Scripture{
     //Constructors
     public Scripture(Reference Reference, string text)
     {
-        //Empty
+        //Stores the reference
+        _reference = Reference;
+
+        //Stores the list, divides the list, and create a Word instance for each word
+        //to finally store each word in the Word list called _words
+
+        //Dividing the text string into a list of strings
+        List<string> newWord = text.Split(' ').ToList();
+
+        //Creating a loop to give each word a Word instance
+        foreach (string word in newWord)
+        {
+        //Creating an instance of the class Word and inserting each word in the instance as parameter
+         Word aWord = new Word(text: word);
+        }
+
+
+
     }
 
     //Methods
