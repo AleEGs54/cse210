@@ -37,22 +37,28 @@ public class Word
 
     }
     public void Show()
-
     {
-
+        
     }
-    public bool isHidden()
+    public bool IsHidden()
     //Verifies if a word is hidden or not
     {
-
-
+        //If firstLetter of the word is underscore, it means that the word is hidden.
+        char firtsLetter = _text[0];
+        if (firtsLetter == '_' )
+        {
+        return true;
+        }
+        else
+        {
         return false;
+        }
+
     }
     public string GetDisplayText()
-    //The word this method retrieves could be a word (like "prayer") or the hidden version
-    //(____). It's usefull to then call the isHidden function, to determine if it's hidden or not.
+    //The word this method returns could be a word (like "prayer") or the hidden version (____).
     {
-        return "";
+        return _text;
     }
 
 
