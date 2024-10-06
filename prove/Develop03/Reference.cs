@@ -1,4 +1,5 @@
-public class Reference {
+public class Reference
+{
     //This stores the references for scriptures: John 3:5, Proverbs 3:5-6
     //and sends it to the Scripture class
 
@@ -32,7 +33,7 @@ public class Reference {
         if (_endVerse != 0)
         {
             return $"{_book} {_chapter}:{_verse}-{_endVerse}";
-        } 
+        }
         else
         {
             return $"{_book} {_chapter}:{_verse}";

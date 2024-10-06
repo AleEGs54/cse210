@@ -21,43 +21,49 @@ public class Word
 
     public void Hide()
     {
-        //Takes a word (_text) and retrieves the lenght, then replaces the word with as many undercores are needed
+        //El metodo que llame a show, debe escoger tres palabras aleatoriamente y marcarlas como _isHidden. Luego, Show() llama a Hide para escoder palabras marcadas, si no están marcadas, solo lo dejarán pasar.
 
-        //Storing the lenght of the word
-        int lenghtText = _text.Length;
-
-        //Redeclaring the word as empty
-        _text = "";
-
-        //Filling the variable with as many underscores as needed according to the lenght of the original word. As result, _text will be "____...___"
-        for (int i = 0; i < lenghtText; i++)
-        {
-            _text += "_";
-        }
-
+        //Activates the _isHidden attribute as true.
+        _isHidden = true;
     }
     public void Show()
-    {
-        
+    {//If a word is hidden, the show method shows an underscore, otherwise it shows the word
+
+        if (_isHidden == true)
+        {
+            //Takes a word (_text) and retrieves the lenght, then replaces the word with as many undercores are needed
+
+            //Storing the lenght of the word
+            int lenghtText = _text.Length;
+
+            //Redeclaring the word as empty
+            _text = "";
+
+            //Filling the variable with as many underscores as needed according to the lenght of the original word. As result, _text will be "____...___"
+            for (int i = 0; i < lenghtText; i++)
+            {
+                _text += "_";
+            }
+        }
     }
     public bool IsHidden()
     //Verifies if a word is hidden or not
+    //If isHidden = true; return true, else, false.
     {
-        //If firstLetter of the word is underscore, it means that the word is hidden.
-        char firtsLetter = _text[0];
-        if (firtsLetter == '_' )
+        if (_isHidden == true)
         {
-        return true;
+            return true;
         }
         else
         {
-        return false;
+            return false;
         }
 
     }
     public string GetDisplayText()
     //The word this method returns could be a word (like "prayer") or the hidden version (____).
     {
+        Show();
         return _text;
     }
 

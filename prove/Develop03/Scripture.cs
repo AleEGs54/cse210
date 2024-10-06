@@ -1,4 +1,5 @@
-public class Scripture{
+public class Scripture
+{
     //This class receives the reference from the Reference class, also creates
     // a list of Word objects. It receives the entire scripture as a string
     //and divides the string into Word objects, each word comes with a isHidden value
@@ -15,7 +16,7 @@ public class Scripture{
         _reference = Reference;
 
         //Stores the list, divides the list, and create a Word instance for each word
-        //to finally store each word in the Word list called _words
+        //to finally store each word in the Word list called _words.
 
         //Dividing the text string into a list of strings
         List<string> newWord = text.Split(' ').ToList();
@@ -23,7 +24,7 @@ public class Scripture{
         //Creating a loop to give each word a Word instance
         foreach (string word in newWord)
         {
-        //Creating an instance of the class Word and inserting each word in the instance as parameter
+            //Creating an instance of the class Word and inserting each word in the instance as parameter
             Word aWord = new Word(text: word);
             _words.Add(aWord);
         }
@@ -49,18 +50,17 @@ public class Scripture{
             if (_words[randomNumber].IsHidden() == false)
             {
 
-            //Hidding the word in the [randomNumber] index in the _words object list
-            _words[randomNumber].Hide();
+                //Hidding the word in the [randomNumber] index in the _words object list
+                _words[randomNumber].Hide();
 
-            //Count + 1 each time a word is hidden
-            count += 1;
+
+
+                //Count + 1 each time a word is hidden
+                count += 1;
             }
 
-
-
         }
-        
-        
+
     }
     public string GetDisplayText()
     //Displays the 
@@ -107,12 +107,12 @@ public class Scripture{
 
             break;
         }
-        
+
         return true;
-        
 
 
 
-        
+
+
     }
 }
