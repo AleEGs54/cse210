@@ -15,7 +15,7 @@ public class Address
         _country = country;
     }
     public Address(string street, string city, string state)
-    {
+    { 
         _street = street;
         _city = city;
         _state = state;
