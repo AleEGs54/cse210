@@ -27,7 +27,7 @@ public class Address
 
     public bool ResidenceInUSA()
     {
-        if (_country.ToLower() == "usa" || _country.ToLower() == "us")
+        if (_country.ToLower().Replace(" ", "") == "usa" || _country.ToLower().Replace(" ", "") == "us")
         {
             return true;
         }

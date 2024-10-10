@@ -11,7 +11,7 @@ public class Order
     {
         //Creating an instance of customer
         Customer customer = new Customer(name, address);
-
+        _customer = customer;
     }
 
     //Methods 
@@ -21,7 +21,7 @@ public class Order
         _products.Add(product);
     }
 
-    public float OrderTotalCost()
+    public string OrderTotalCost()
     {
         float totalCost = 0;
         int shippingCost;
@@ -34,14 +34,14 @@ public class Order
         {
             shippingCost = 5;
         }
-        else 
+        else
         {
             shippingCost = 35;
         }
 
         float finalCost = totalCost + shippingCost;
 
-        return finalCost;
+        return $"\nThe total cost is: {finalCost}";
     }
 
     public string PackingLabel()
@@ -54,12 +54,12 @@ public class Order
             labels.Append(product.DisplayPackingLabel());
 
         }
-        return labels.ToString();
+        return $"\nPackage Content:\n{labels}";
     }
 
     public string ShippingLabel()
     {
-        
+
         return $"{_customer.DisplayShippingLabel()}";
     }
 }

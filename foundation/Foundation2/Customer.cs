@@ -1,5 +1,3 @@
-using System.Reflection.Metadata.Ecma335;
-
 public class Customer
 {
     //Attributes
@@ -36,6 +34,6 @@ public class Customer
 
     public string DisplayShippingLabel()
     {
-        return $"Customer: {_name} \n Address: {_address.DisplayAddress()}";
+        return $"Ship to: \nCustomer: {_name} \nAddress: {_address.DisplayAddress()}";
     }
 }
