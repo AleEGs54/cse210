@@ -19,7 +19,7 @@ public class Scripture
         //to finally store each word in the Word list called _words.
 
         //Dividing the text string into a list of strings
-        List<string> newWord = text.Split(' ').ToList();
+        string[] newWord = text.Split(' ');
 
         //Creating a loop to give each word a Word instance
         foreach (string word in newWord)
