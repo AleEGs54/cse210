@@ -42,8 +42,13 @@ public class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"\n\nWell done!! \nYou have completed another session of {_duration} seconds of the {_name}");
+        Console.WriteLine($"\n\nWell done!!");
+        ShowSpinner(5);
+        Console.WriteLine($"\nYou have completed another session of {_duration} seconds of the {_name}");
+        ShowSpinner(5);
         Console.WriteLine("--------------------------------------------------------------------------");
+        Thread.Sleep(3000);
+        Console.Clear();
     }
 
     public void ShowSpinner(int seconds)
@@ -73,7 +78,7 @@ public class Activity
         {
             string s = animationStrings[i];
             Console.Write(s);
-            Thread.Sleep(500);
+            Thread.Sleep(300);
             //The \b \b is like clicking on left arrow, then sets a blank space that erases the current sprite and finally clicking again on left arrow. (<-)
             Console.Write("\b \b");
 
