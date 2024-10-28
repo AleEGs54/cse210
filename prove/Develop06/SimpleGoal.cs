@@ -12,6 +12,14 @@ public class SimpleGoal : Goal
         _points = points;
         _isComplete = false;
     }
+    public SimpleGoal(string name, string description, string points, bool isComplete) : base(name,description,points)
+    {
+        //For when the user load from a txt file
+        _shortname = name;
+        _description = description;
+        _points = points;
+        _isComplete = isComplete;
+    }
 
     //Methods
     public override int RecordEvent()

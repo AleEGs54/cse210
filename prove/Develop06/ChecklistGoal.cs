@@ -16,6 +16,16 @@ public class ChecklistGoal : Goal
         _bonus = bonus;
         _amountCompleted = 0;
     }
+    public ChecklistGoal(string name, string description, string points, int bonus, int target, int amountCompleted) : base(name,description,points)
+    {
+        //Constructor for when the user loads from a txt file
+        _shortname = name;
+        _description = description;
+        _points = points;
+        _target = target;
+        _bonus = bonus;
+        _amountCompleted = amountCompleted;
+    }
 
     //Methods
     public override int RecordEvent()
@@ -46,6 +56,6 @@ public class ChecklistGoal : Goal
     public override string GetStringRepresentation()
     {
         //This method returns a string that makes easy to write and read the goal from a txt file.
-        return $"SimpleGoal:{_shortname},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
+        return $"ChecklistGoal:{_shortname},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
     }
 }
