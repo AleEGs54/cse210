@@ -4,7 +4,7 @@ public class GoalManager
 {
     //Attributes
     private List<Goal> _goals = new List<Goal>();
-    protected int _score;
+    private int _score;
 
     //Constructor
     public GoalManager()
