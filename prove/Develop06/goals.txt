@@ -1,3 +1,0 @@
-0
-SimpleGoal:123,123,10,False
-SimpleGoal:12234,12334,12345,False
